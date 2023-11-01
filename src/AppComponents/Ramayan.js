@@ -16,16 +16,28 @@ export default function Book() {
   }, []);
   let handleListen = () => {
     let spans = document.querySelector(".ramayan");
+    function speak(i) {
+      if ("speechSynthesis" in window) {
+        const utterance = new SpeechSynthesisUtterance(spans.children[i].textContent);
+        utterance.lang="hi-IN"
 
-    if ("speechSynthesis" in window) {
-      const utterance = new SpeechSynthesisUtterance(
-        "hi Rahul shukla ,how are you "
-      );
+        utterance.onstart=()=>{
+        
+          spans.children[i].style.color="red"
 
-     
+        }
+        speechSynthesis.speak(utterance);
 
-      speechSynthesis.speak(utterance);
+        utterance.onend=()=>{
+
+          if(i+1<spans.children.length){
+
+            speak(i+1)
+          }
+        }
+      }
     }
+    speak(0)
   };
   return (
     <div className="ram_cont">
