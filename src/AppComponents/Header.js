@@ -1,19 +1,19 @@
-import React, { useState } from "react";
+import React from "react";
 
 export default function Mob() {
-  
 
   return (
     <>
       <nav
         class="w3-sidebar w3-bar-block w3-card"
         id="mySidebar"
-        style={{display:"none"}}
+        style={{ display: "none", zIndex: 70 }}
       >
         <div class="w3-container w3-theme-d2">
           <span
             onClick={() => {
               document.getElementById("mySidebar").style.display = "none";
+              
             }}
             class="w3-button w3-display-topright w3-large"
           >
@@ -45,12 +45,13 @@ export default function Mob() {
           class="w3-bar-item w3-button w3-xxlarge w3-hover-theme"
           onClick={() => {
             document.getElementById("mySidebar").style.display = "block";
+            
           }}
         >
           &#9776;
         </button>
         <h1 class="w3-bar-item w3-xxlarge">EBOOKS</h1>
-      </header>    
+      </header>
     </>
   );
 }
